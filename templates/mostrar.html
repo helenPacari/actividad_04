@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>Detalle de la Tarea</h2>
+
+<p><strong>ID:</strong> {{ tarea.id }}</p>
+<p><strong>Título:</strong> {{ tarea.titulo }}</p>
+
+<a href="{{ url_for('sobrenosotros') }}">Volver</a>
+
+{% endblock %}

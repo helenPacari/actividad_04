@@ -1,17 +1,13 @@
-{% extends  "base.html" %}
-
-{% block contenido %}
+{% extends "base.html" %} {% block contenido %}
 
 <h2>Taller Apps - Sobre nosotros</h2>
 <h4>Bienvenido a este sitio de taller .....</h4>
 <form action="/sobrenosotros" method="post">
-    {{ form.csrf_token() }}
-    {{ form.titulo.label }}
-    {{ form.titulo }}
-    {{ form.enviar }}
+  {{ form.csrf_token() }} {{ form.titulo.label }} {{ form.titulo }} {{
+  form.enviar }}
 </form>
 {% if titulo %}
-    <h2>{{ titulo }}</h2>
+<h2>{{ titulo }}</h2>
 {% endif %}
 <h3>Lista de Tareas:</h3>
 <ul>
@@ -19,6 +15,18 @@
   <li>
     {{ tarea.titulo }}
     <a href="{{ url_for('editar', id=tarea.id) }}">Editar</a>
+  </li>
+  {% endfor %}
+</ul>
+
+<h3>Lista de Tareas:</h3>
+<ul>
+  {% for tarea in tareas %}
+  <li>
+    {{ tarea.titulo }}
+    <a href="{{ url_for('mostrar', id=tarea.id) }}">Mostrar</a>
+    <a href="{{ url_for('editar', id=tarea.id) }}">Editar</a>
+    <a href="{{ url_for('eliminar', id=tarea.id) }}">Eliminar</a>
   </li>
   {% endfor %}
 </ul>
