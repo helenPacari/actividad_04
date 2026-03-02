@@ -23,7 +23,7 @@ def sobrenosotros():
     
 @app.route('/saludo')
 def saludo():
-        return 'Hola bienvenido a Taller Apps '
+        return 'Hola bienvenidos a Taller Apps '
     
 @app.route('/usuario/<nombre>')
 def usuario(nombre):
