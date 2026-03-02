@@ -37,3 +37,8 @@ def eliminar(id):
     db.session.delete(tarea)
     db.session.commit()
     return redirect(url_for('sobrenosotros'))  
+
+@app.route('/mostrar/<int:id>')
+def mostrar(id):
+    tarea = Tarea.query.get_or_404(id)
+    return render_template('mostrar.html', tarea=tarea)
