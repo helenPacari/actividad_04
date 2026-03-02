@@ -13,5 +13,14 @@
 {% if titulo %}
     <h2>{{ titulo }}</h2>
 {% endif %}
+<h3>Lista de Tareas:</h3>
+<ul>
+  {% for tarea in tareas %}
+  <li>
+    {{ tarea.titulo }}
+    <a href="{{ url_for('editar', id=tarea.id) }}">Editar</a>
+  </li>
+  {% endfor %}
+</ul>
 
 {% endblock %}
