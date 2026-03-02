@@ -28,3 +28,13 @@ def saludo():
 @app.route('/usuario/<nombre>')
 def usuario(nombre):
         return f'Hola{nombre} bienvenido a Taller Apps '
+        
+@app.route('/editar/<int:id>', methods=['GET', 'POST'])
+def editar(id):
+    tarea = Tarea.query.get_or_404(id)
+    formulario = formularios.FormAgregarTareas(obj=tarea) 
+    if formulario.validate_on_submit():
+        tarea.titulo = formulario.titulo.data
+        db.session.commit()
+        return redirect(url_for('sobrenosotros'))  
+    return render_template('editar.html', form=formulario, tarea=tarea) 
