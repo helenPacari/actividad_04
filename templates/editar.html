@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <h2>Editar Tarea</h2>
+
+    <form method="POST">
+        {{ form.csrf_token }}
+        <label>Título:</label><br>
+        {{ form.titulo(value=tarea.titulo) }}<br>
+        {% if form.titulo.errors %}
+            <ul>
+                {% for error in form.titulo.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a href="{{ url_for('sobrenosotros') }}">Cancelar</a>
+{% endblock %}
